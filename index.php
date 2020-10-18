@@ -583,6 +583,10 @@
 					<p><a href="local_custom/order_send.php"><?php echo $Text['icon_print'];?></a></p>
 				</div>
 				<!-- EFS-fin -->
+				<div class="homeIcon">
+					<a href="local_custom/tax_report.php"><img src="img/informes.png"/></a>
+					<p><a href="local_custom/tax_report.php"><?php echo $Text['tax_report'];?></a></p>
+				</div>
 			</div>
 			<div id="rightSummaryCol" class="aix-style-layout-splitW80 floatLeft aix-layout-widget-center-col">
 
