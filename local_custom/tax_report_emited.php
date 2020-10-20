@@ -9,35 +9,52 @@
 	<link rel="stylesheet" type="text/css"               href="css/reports_paper.css"/>
     <link rel="stylesheet" type="text/css"               href="css/reports_layout.css"/>
   	<link rel="stylesheet" type="text/css" media="print" href="css/reports-print.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css"               href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
+  	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+	<script>
+	$(document).ready( function () {
+	    $('#tax_table').DataTable();
+	} );
+	</script>
+
 </head>
 <body>
     <div class="page-p lite">
-    <h2 class="start"><?php echo "Llistat factures emeses"; ?></h2>
+    <h2 class="start"><?php echo "Llistat de factures emeses"; ?></h2>
     <?php
+    $start_date=date("Ymd", strtotime($_GET['start_date']));
+    $end_date=date("Ymd", strtotime($_GET['end_date']));
+
     $db = DBWrap::get_instance();
-    $strSQL = 'select * from emeses';
+    $strSQL = 'select * from emeses  WHERE data_c BETWEEN '.$start_date.' and '.$end_date;
     $rs = $db->Execute($strSQL);
     ?>
 	<div class="container">
 	 
 	 <form method='post' action='download.php'>
-	  <input type='submit' value='Export' name='Export'>
-	 
-	  <table border='1' style='border-collapse:collapse;'>
+	  <input type='submit' value='Exporta' name='Exporta'>
+	  <br>	 
+	  <br>	 
+	  <br>	 
+	  <table id='tax_table'>
+	    <thead>
 	    <tr>
 	     <th>Num Fra</th>
 	     <th>Data</th>
 	     <th>Client</th>
 	     <th>NIF</th>
-	     <th>BASE IMPOSABLE 4%</th>
-	     <th>BASE IMPOSABLE 10%</th>
-	     <th>BASE IMPOSABLE 21%</th>
-	     <th>BASE IMPOSABLE 0%</th>
+	     <th>BASE IMP. 4%</th>
+	     <th>BASE IMP. 10%</th>
+	     <th>BASE IMP. 21%</th>
+	     <th>BASE IMP. 0%</th>
 	     <th>IVA 4%</th>
 	     <th>IVA 10%</th>
 	     <th>IVA 21%</th>
 	     <th>Total factura</th>
 	    </tr>
+	    </thead>
+	    <tbody>
 	    <?php
      	    $user_arr = array();
 	    $user_arr[0] = array('Num Fra','Data','Client','NIF','BASE IMPOSABLE 4%','BASE IMPOSABLE 10%','BASE IMPOSABLE 21%','BASE IMPOSABLE 0%','IVA 4%','IVA 10%','IVA 21%','Total factura');
@@ -73,6 +90,7 @@
 	   <?php
 	    }
 	   ?>
+	    </tbody>
 	   </table>
 	   <?php 
 	    $serialize_user_arr = serialize($user_arr);

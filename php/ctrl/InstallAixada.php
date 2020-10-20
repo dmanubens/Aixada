@@ -93,6 +93,7 @@ try{
                 $results .= logInstall(
                     execute_sql_files($db, 'sql/', array(
                         'aixada.sql',
+                        '_lagranera.sql',
                         'setup/aixada_insert_defaults.sql', 
                         'setup/aixada_insert_default_user.sql'
                     ))

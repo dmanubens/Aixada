@@ -49,18 +49,32 @@
                 <h2>Informes IVA</h2>
 		<table>
                 <tr>
+		    <td>
+			<form>
+			    <label for="sdate">Data inici:</label>
+			    <input type="date" id="sdate">
+			</form>
+		    </td>
+		    <td>
+			<form>
+			    <label for="edate">Data fi:</label>
+			    <input type="date" id="edate">
+			</form>
+		    </td>
+                </tr>
+                <tr>
                     <td><button class="aix-layout-fixW150"
-                            onclick="window.open('tax_report_emited.php','_blank');"
+                            onclick="sdate = document.getElementById('sdate').value; edate = document.getElementById('edate').value; window.open('tax_report_emited.php?start_date='+ sdate +'&end_date='+ edate,'_blank');"
                             >
                         IVA Emeses
                     </button></td>
 					<td><p>
                         Llistat factures emeses.
                     </p></td>
-				</tr>
+		</tr>
                 <tr>
                     <td><button class="aix-layout-fixW150"
-                            onclick="window.open('tax_report_received.php','_blank');"
+                            onclick="sdate = document.getElementById('sdate').value; edate = document.getElementById('edate').value; window.open('tax_report_received.php?start_date='+ sdate +'&end_date='+ edate,'_blank');"
                             >
                         IVA Rebudes
                     </button></td>
