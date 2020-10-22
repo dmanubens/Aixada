@@ -136,7 +136,8 @@ try{
                     'queries/aixada_queries_shop.sql',
                     'queries/aixada_queries_statistics.sql',
                     'queries/aixada_queries_validate.sql',
-                    'queries/canned_queries.sql'
+                    'queries/canned_queries.sql',
+                    '_lagranera.sql'
                 ))
             );
             
